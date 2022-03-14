@@ -1,0 +1,44 @@
+{
+  "name": "@shop100/100pay-checkout",
+  "version": "1.0.0",
+  "description": "accept crypto payments on your website in 3 mins",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shop100global/100pay-checkout-js.git"
+  },
+  "keywords": [
+    "crypto",
+    "payment",
+    "gateway",
+    "crypto",
+    "integrate",
+    "crypto",
+    "payment",
+    "on",
+    "your",
+    "website",
+    "crypto",
+    "checkout",
+    "bitcoin",
+    "ethereum",
+    "bnb",
+    "algorand",
+    "avalanche",
+    "bsc",
+    "everscale",
+    "litecoin",
+    "usdt",
+    "100pay checkout",
+    "100pay"
+  ],
+  "author": "brainyjosh - 100pay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shop100global/100pay-checkout-js/issues"
+  },
+  "homepage": "https://github.com/shop100global/100pay-checkout-js#readme"
+}
