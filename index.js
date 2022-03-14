@@ -27,7 +27,7 @@ class payWith100Pay {
         this.createElements(data);
       })
       .catch((error) => {
-        charge.onError();
+        charge.onError(error);
       });
   }
   createElements(data) {
@@ -111,4 +111,5 @@ class payWith100Pay {
   }
 }
 const shop100Pay = new payWith100Pay();
+window.shop100Pay = shop100Pay;
 module.exports.shop100Pay = shop100Pay;
