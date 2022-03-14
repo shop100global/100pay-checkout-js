@@ -2,7 +2,7 @@ let charge;
 class payWith100Pay {
   constructor(config) {}
   appendStyle(content) {
-    style = document.createElement("STYLE");
+    let style = document.createElement("STYLE");
     style.id = "100pay_style";
     style.type = "text/css";
     style.appendChild(document.createTextNode(content));
