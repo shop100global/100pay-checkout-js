@@ -2,7 +2,7 @@
   "name": "@shop100/100pay-checkout",
   "version": "1.0.0",
   "description": "accept crypto payments on your website in 3 mins",
-  "main": "index.js",
+  "main": "index.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
