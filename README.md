@@ -131,19 +131,24 @@ When the user clicks on pay button, load 100pay modal.
 ```Javascript
   function payWith100pay(e) {
       e.preventDefault();
+      const email = document.getElementById("email-address").value;
+      const phone = document.getElementById("phone").value;
+      const amount = document.getElementById("amount").value;
+      const firstName = document.getElementById("first-name").value;
+      const lastName = document.getElementById("last-name").value;
 
       shop100Pay.setup({
       ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
       api_key: "TEST;PK;XXXX", // paste api key here
       customer: {
         user_id: "1", // optional
-        name: document.getElementById("first-name"),
-        phone:  document.getElementById("phone"),
-        email:  document.getElementById("email-address")
+        name: firstName + " " + lastName,
+        phone,
+        email
       },
       billing: {
-        amount: document.getElementById("amount"),
-        currency: "USD",
+        amount,
+        currency: "USD", // or any other currency supported by 100pay
         description: "Test Payment",
         country: "USA",
         vat: 10, //optional
