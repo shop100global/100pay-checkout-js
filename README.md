@@ -22,7 +22,7 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 
 **View Demo**
 
-* Live example hosted on Netlify [here](https://100pay.co/demo)
+* Live example hosted on Netlify [here](pay-with-100pay-example.netlify.app/)
 
 * Source code [here](https://github.com/miracleonyenma/pay-with-100pay-example)
 
