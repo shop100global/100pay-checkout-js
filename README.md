@@ -77,13 +77,13 @@ When the user clicks on pay button, load 100pay modal.
         "TEST;PK;XXXX", // paste api key here
       customer: {
         user_id: "1", // optional
-        name: document.getElementById("first-name"),
-        phone:  document.getElementById("phone"),
-        email:  document.getElementById("email-address")
+        name: firstName + " " + lastName,
+        phone,
+        email
       },
       billing: {
-        amount: document.getElementById("amount"),
-        currency: "USD",
+        amount,
+        currency: "USD", // or any other currency supported by 100pay
         description: "Test Payment",
         country: "USA",
         vat: 10, //optional

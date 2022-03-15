@@ -65,6 +65,16 @@ class payWith100Pay {
         .show100Pay.show {
         top: 8%;
         }
+        .close_100pay_btn {
+          background: #fff;
+          outline: none;
+          border: none;
+          padding: 6px 12px;
+          border-radius: 8px;
+          font-weight: 700;
+          color: #e94444;
+          cursor: pointer;
+        }
         .body-overflow-hidden {
         overflow: hidden;
         }
@@ -78,7 +88,7 @@ class payWith100Pay {
     closeButtonWrapper.style =
       "text-align: center; color: white; padding: 4px;";
     closeButtonWrapper.id = "close_100pay_btn";
-    closeButton.className = "btn text-white";
+    closeButton.className = "btn text-white close_100pay_btn";
     closeButton.id = "close_100pay_modal";
     closeButtonWrapper.appendChild(closeButton);
     iframe.className = "show100Pay_modal";
