@@ -1,6 +1,6 @@
 {
-  "name": "@shop100/100pay-checkout",
-  "version": "1.0.5",
+  "name": "@100pay-hq/checkout",
+  "version": "1.0.0",
   "description": "accept crypto payments on your website in 3 mins",
   "main": "index.min.js",
   "scripts": {
@@ -33,7 +33,13 @@
     "litecoin",
     "usdt",
     "100pay checkout",
-    "100pay"
+    "100pay",
+    "ico",
+    "launchpad",
+    "coinbase",
+    "commerce",
+    "bitpay",
+    "coin payments"
   ],
   "author": "brainyjosh - 100pay",
   "license": "ISC",
