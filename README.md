@@ -102,7 +102,7 @@ Start by importing the library to your javascript file
 // using import
 import { shop100Pay } from "@shop100/100pay-checkout";
 
-// using require
+// or import using require
 const shop100Pay = require("@shop100/100pay-checkout")
 ```
 When the user clicks on pay button, load 100pay modal.
