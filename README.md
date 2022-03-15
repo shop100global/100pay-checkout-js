@@ -3,9 +3,11 @@
 Accept crypto payments on your website in 3 mins
 
 ## Getting Started
-Before you can start accepting crypto payments, you need to create a 100pay account and obtain your api keys from the [100Developers platform](https://100pay.co) 
+
+Before you can start accepting crypto payments, you need to create a [100pay account](https://100pay.co)  and obtain your api keys from the [100Developers platform](https://100pay.co)
 
 ## Features
+
 * Accept cryptopayments on your website
 * Withdraw to your crypto wallet or fiat balance
 * create payment invoice
@@ -16,62 +18,251 @@ Before you can start accepting crypto payments, you need to create a 100pay acco
 * swap crypto
 * buy/sell crypto
 
-## Usage
+## 100pay-js Usage
+
 First Import the Javascript Library to your app or add 100pay-js script tag to your website headers.
 
-### 100pay-js
-```Html 
-<script src="https://js.100pay.co/"></script>
+### HTML
+
+```Html
+  <form id="paymentForm">
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email-address" required />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone </label>
+      <input type="tel" id="phone" required />
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" required />
+    </div>
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" />
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input type="text" id="last-name" />
+    </div>
+    <div class="form-submit">
+      <button type="submit">Pay</button>
+    </div>
+  </form>
+
+<!-- Wrapper for the 100Pay checkout modal -->
+<div id="show100Pay"></div>
 ```
 
-### npm Package
+### Javascript
+
+When the user clicks on pay button, load 100pay modal.
+
+```HTML
+<script>
+  const paymentForm = document.getElementById('paymentForm');
+  paymentForm.addEventListener("submit", payWith100pay, false);
+  function payWith100pay(e) {
+      e.preventDefault();
+        const email = document.getElementById("email-address").value;
+        const phone = document.getElementById("phone").value;
+        const amount = document.getElementById("amount").value;
+        const firstName = document.getElementById("first-name").value;
+        const lastName = document.getElementById("last-name").value;
+
+      shop100Pay.setup({
+      ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
+      api_key:
+        "TEST;PK;XXXX", // paste api key here
+      customer: {
+        user_id: "1", // optional
+        name: document.getElementById("first-name"),
+        phone:  document.getElementById("phone"),
+        email:  document.getElementById("email-address")
+      },
+      billing: {
+        amount: document.getElementById("amount"),
+        currency: "USD",
+        description: "Test Payment",
+        country: "USA",
+        vat: 10, //optional
+        pricing_type: "fixed_price" // or partial
+      },
+      metadata: {
+        is_approved: "yes",
+        order_id: "OR2", // optional
+        charge_ref: "REF" // optionalm, you can add more fields
+      },
+      call_back_url: "http://localhost:8000/verifyorder/",
+      onClose: msg => {
+        alert("User closed payment modal.");
+      },
+      callback: reference => {
+        alert(`Transaction successful with id: ${reference}`);
+      },
+      onError: error => {
+          console.log(error)
+          alert("Sorry something went wrong pls try again.")
+      }
+    });
+
+}
+</script>
+
+<script src="https://js.100pay.co/"></script>
+ ```
+
+## using npm
+
+Start by importing the library to your javascript file
+
 ```Javascript
 
 // using import
 import { shop100Pay } from "@shop100/100pay-checkout";
 
-// using require
-const shop100Pay = require("@shop100/100pay-checkout)
+// or import using require
+const shop100Pay = require("@shop100/100pay-checkout")
 ```
-Next initiate the charge and watch the magic happen
+
+When the user clicks on pay button, load 100pay modal.
+
 ```Javascript
+  function payWith100pay(e) {
+      e.preventDefault();
+
       shop100Pay.setup({
-        ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
-        api_key:
-          "TEST;PK;XXXX", // paste api key here
-        customer: {
-          user_id: "1",
-          name: this.user.name,
-          phone: this.user.phone,
-          email: this.user.email
-        },
-        billing: {
-          amount: this.checkout_form.grand_total,
-          currency: this.user.currency,
-          description: "Payment for your Shop100 Order",
-          country: this.user.country,
-          vat: 10,
-          pricing_type: "fixed_price"
-        },
-        metadata: {
-          is_approved: "yes",
-          order_id: order_id,
-          charge_ref: order_id
-        },
-        call_back_url: "http://localhost:8000/verifyorder/",
-        onClose: msg => {
-          alert("User closed payment modal.");
-        },
-        callback: reference => {
-        
-          alert(`Transaction successful with id: ${reference}`);
-        },
-        onError: error => {
-            console.log(error)
-            alert("Sorry something went wrong pls try again.")
-        }
-      });
+      ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
+      api_key: "TEST;PK;XXXX", // paste api key here
+      customer: {
+        user_id: "1", // optional
+        name: document.getElementById("first-name"),
+        phone:  document.getElementById("phone"),
+        email:  document.getElementById("email-address")
+      },
+      billing: {
+        amount: document.getElementById("amount"),
+        currency: "USD",
+        description: "Test Payment",
+        country: "USA",
+        vat: 10, //optional
+        pricing_type: "fixed_price" // or partial
+      },
+      metadata: {
+        is_approved: "yes",
+        order_id: "OR2", // optional
+        charge_ref: "REF" // optionalm, you can add more fields
+      },
+      call_back_url: "http://localhost:8000/verifyorder/",
+      onClose: msg => {
+        alert("User closed payment modal.");
+      },
+      callback: reference => {
+        alert(`Transaction successful with id: ${reference}`);
+      },
+      onError: error => {
+          console.log(error)
+          alert("Sorry something went wrong pls try again.")
+      }
+    });
+
+}
+```
+
+## .Vue Example File
+
+```HTML
+<template>
+  <div id="app">
+     <form id="paymentForm">
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email-address" required />
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="tel" id="amount" required />
+    </div>
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" />
+    </div>
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input type="text" id="last-name" />
+    </div>
+    <div class="form-submit">
+      <button type="submit" @click="payWith100pay()"> Pay </button>
+    </div>
+  </form>
+  </div>
+</template>
+
+<script>
+// using import
+import { shop100Pay } from "@shop100/100pay-checkout";
+
+// using require
+const shop100Pay = require("@shop100/100pay-checkout");
+
+export default {
+  data(){
+    return {
+      checkout_form: {
+        name: "Brainy",
+        phone: "0123456",
+        email: "brainy@100pay.co",
+        amount: 10000,
+        currency: "USD",
+        country: "NGN"
+      }
+    }
+  },
+  methods: {
+      payWith100pay(e) {
+        e.preventDefault();
+
+        shop100Pay.setup({
+          ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
+          api_key: "TEST;PK;XXXX", // paste api key here
+          customer: {
+            user_id: "1", // optional
+            name: this.checkout_form.name,
+            phone:  this.checkout_form.phone,
+            email:  this.checkout_form.email
+          },
+          billing: {
+            amount: this.checkout_form.amount,
+            currency: this.checkout_form.currency,
+            description: "Test Payment",
+            country: this.checkout_form.country,
+            vat: 10, //optional
+            pricing_type: "fixed_price" // or partial
+          },
+          metadata: {
+            is_approved: "yes",
+            order_id: "OR2", // optional
+            charge_ref: "REF" // optionalm, you can add more fields
+          },
+          call_back_url: "http://localhost:8000/verifyorder/",
+          onClose: msg => {
+            alert("User closed payment modal.");
+          },
+          callback: reference => {
+            alert(`Transaction successful with id: ${reference}`);
+          },
+          onError: error => {
+              console.log(error)
+              alert("Sorry something went wrong pls try again.")
+          }
+        });
+    }
+}
+}
+</script>
 ```
 
 ## Want More?
-Read our documentation [100Developers platform](https://100pay.co) 
+
+Read our documentation [100Developers platform](https://100pay.co)

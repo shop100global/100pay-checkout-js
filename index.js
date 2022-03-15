@@ -1,6 +1,6 @@
 let charge;
 class payWith100Pay {
-  constructor(config) {}
+  constructor(config) { }
   appendStyle(content) {
     let style = document.createElement("STYLE");
     style.id = "100pay_style";
@@ -32,7 +32,7 @@ class payWith100Pay {
   }
   createElements(data) {
     this.appendStyle(`
-        #shop100pay {
+        #show100Pay {
         top: 0;
         position: fixed;
         background-color: #000000c2;
@@ -41,7 +41,7 @@ class payWith100Pay {
         z-index: 1050;
         display: none;
         }
-        .shop100pay {
+        .show100Pay {
         transition: 0.3s;
         height: 100vh;
         width: 100%;
@@ -51,19 +51,22 @@ class payWith100Pay {
         position: fixed;
         z-index: 1050;
         top: 100%;
-        padding-top: 10px;
+        padding-top: 0;
         border-radius: 16px;
         overflow: hidden;
         }
-        .shop100pay .shop100pay_modal {
-        height: 100vh;
+        .show100Pay .show100Pay_modal {
+        height: calc(100% - 8%);
         width: 100%;
         border: none;
         border-radius: 16px;
         padding-bottom: 10%;
         }
-        .shop100pay.show {
-        top: 4%;
+        .show100Pay.show {
+        top: 8%;
+        }
+        .body-overflow-hidden {
+        overflow: hidden;
         }
     `);
     let wrapper = document.createElement("div");
@@ -78,33 +81,33 @@ class payWith100Pay {
     closeButton.className = "btn text-white";
     closeButton.id = "close_100pay_modal";
     closeButtonWrapper.appendChild(closeButton);
-    iframe.className = "shop100pay_modal";
-    iframe.id = "shop100payModal";
-    wrapper.className = "shop100pay";
-    wrapper.id = "shop100payWrapper";
+    iframe.className = "show100Pay_modal";
+    iframe.id = "show100PayModal";
+    wrapper.className = "show100Pay";
+    wrapper.id = "show100PayWrapper";
     wrapper.appendChild(iframe);
-    document.body.style = "overflow: hidden !important;";
-    document.getElementById("shop100pay").style = "display: block;";
-    document.getElementById("shop100pay").appendChild(closeButtonWrapper);
-    document.getElementById("shop100pay").appendChild(wrapper);
+    document.body.classList.add("body-overflow-hidden");
+    document.getElementById("show100Pay").style = "display: block;";
+    document.getElementById("show100Pay").appendChild(closeButtonWrapper);
+    document.getElementById("show100Pay").appendChild(wrapper);
     let newCloseBtn = document.getElementById("close_100pay_modal");
     newCloseBtn.addEventListener("click", () => {
       this.closeModal(charge);
     });
-    let newIframe = document.getElementById("shop100payModal");
+    let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
-      document.getElementById("shop100payWrapper").classList.add("show");
+      document.getElementById("show100PayWrapper").classList.add("show");
     });
     newIframe.src = data.hosted_url;
   }
   closeModal(charge) {
-    document.getElementById("shop100payWrapper").classList.remove("show");
-    let wrapper = document.getElementById("shop100payWrapper");
+    document.getElementById("show100PayWrapper").classList.remove("show");
+    let wrapper = document.getElementById("show100PayWrapper");
     let close_btn = document.getElementById("close_100pay_btn");
     wrapper.remove();
     close_btn.remove();
-    document.getElementById("shop100pay").style = "display: none;";
-    document.body.style = "overflow: scroll !important;";
+    document.getElementById("show100Pay").style = "display: none;";
+    document.body.classList.remove("body-overflow-hidden");
     let style = document.getElementById("100pay_style");
     style.remove();
     charge.onClose();
