@@ -32,7 +32,7 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 
 ## Example 👇🏾👇🏾😋👇🏾👇🏾
 
-![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647617998/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_h6bknd.gif)
+![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647632635/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_004_ina8fg.gif)
 
 ### View Demo
 
