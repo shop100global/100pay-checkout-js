@@ -1,10 +1,10 @@
-# 100Pay Checkout 
+# 100Pay Checkout
+
 Accept crypto payments on your website in 3 mins
 
-<!-- 
+<!--
 ## ✋ ✋ PACKAGE HAS BEEN DISCONTINUED
 ## Please 👉 [click here](https://npmjs.com/@100pay-hq/checkout) for the updated package 📦 -->
-
 
 ## Getting Started
 
@@ -24,17 +24,27 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 * swap crypto
 * buy/sell crypto
 
-## 100pay-js Usage
+## 100pay-js
 
-![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647375999/faee093d-6a32-49d4-ab91-f6fb07990038_gif_z5n2et.gif)
+---
+
+<br>
+
+## Example 👇🏾👇🏾😋👇🏾👇🏾
+
+![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647617998/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_h6bknd.gif)
 
 ### View Demo
 
-* Live example hosted on Netlify [here](https://pay-with-100pay-example.netlify.app/)
+## 👉 Live example hosted on Netlify [here](https://pay-with-100pay-example.netlify.app/)
 
-* Source code [here](https://github.com/miracleonyenma/pay-with-100pay-example)
+## 👉 Source code [here](https://github.com/miracleonyenma/pay-with-100pay-example)
+
+<br>
 
 ---
+
+<br>
 
 First Import the Javascript Library to your app or add 100pay-js script tag to your website headers.
 
