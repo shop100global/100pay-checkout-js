@@ -32,89 +32,111 @@ class payWith100Pay {
   }
   createElements(data) {
     this.appendStyle(`
-        #show100Pay {
-        top: 0;
-        left: 0;
-        position: fixed;
-        background-color: #000000c2;
-        width: 100vw;
-        height: 100vh;
-        z-index: 1050;
-        display: none;
-        }
-        .show100Pay {
-        transition: 0.3s;
-        height: 100vh;
-        width: 100%;
-        max-width: 400px;
-        left: 50%;
-        transform: translateX(-50%);
-        position: fixed;
-        z-index: 1050;
-        top: 100%;
-        padding-top: 0;
-        border-radius: 16px 16px 0 0;
-        overflow: hidden;
+      #show100Pay {
+      top: 0;
+      left: 0;
+      position: fixed;
+      background-color: #000000c2;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1050;
+      display: none;
       }
-      .show100Pay .show100Pay_modal {
-        height: calc(100% - 66px);
-        width: 100%;
+      .show100Pay {
+      transition: 0.3s;
+      height: 100vh;
+      width: 100%;
+      max-width: 400px;
+      left: 50%;
+      transform: translateX(-50%);
+      position: fixed;
+      z-index: 1050;
+      top: 100%;
+      padding-top: 0;
+      border-radius: 16px 16px 0 0;
+      overflow: hidden;
+    }
+    .show100Pay .show100Pay_modal {
+      height: calc(100% - 66px);
+      width: 100%;
+      border: none;
+      border-radius: 16px 16px 0 0;
+      padding-bottom: 0;
+      }
+      .show100Pay.show {
+      top: 66px;
+      }
+      #close_100pay_btn {
+        padding: 15px 0;
+        display: flex;
+        color: white;
+        max-width: 400px;
+        text-align: right;
+        margin: auto;
+        text-transform: uppercase;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .img_wrapper {
+        display: flex;
+        gap: 8px;
+      }
+      .connected_img, .vic_hand_img {
+        height: 20px;
+      }
+      .vic_hand_img {
+        animation: shake 0.2s ease-in-out infinite alternate-reverse;
+      }
+      .close_100pay_btn {
+        color: #fff;
+        text-align: right;
+        outline: none;
         border: none;
-        border-radius: 16px 16px 0 0;
-        padding-bottom: 0;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .body-overflow-hidden {
+      overflow: hidden;
+      }
+      @keyframes shake {
+        0% {
+          transform: rotate(15deg);
         }
-        .show100Pay.show {
-        top: 66px;
+        100% {
+          transform: rotate(-15deg);
         }
-        #close_100pay_btn {
-          padding: 15px 0;
-          display: flex;
-          color: white;
-          max-width: 400px;
-          text-align: right;
-          margin: auto;
-          text-transform: uppercase;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .feature_img{
-          height: 24px;
-        }
-        .close_100pay_btn {
-          color: #fff;
-          text-align: right;
-          outline: none;
-          border: none;
-          padding: 6px 12px;
-          border-radius: 8px;
-          font-weight: 700;
-          cursor: pointer;
-        }
-        .body-overflow-hidden {
-        overflow: hidden;
-        }
-    `);
+      }
+
+  `);
     let loaderTemplate = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="271px" height="271px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-    <path fill="none" stroke="#ffffff" stroke-width="8" stroke-dasharray="220.66647827148438 35.92244995117187" d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z" stroke-linecap="round" style="transform:scale(0.4);transform-origin:50px 50px">
-      <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0;256.58892822265625"></animate>
-    </path>
-    </svg>`
+  <path fill="none" stroke="#ffffff" stroke-width="4" stroke-dasharray="220.66647827148438 35.92244995117187" d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z" stroke-linecap="round" style="transform:scale(0.4);transform-origin:50px 50px">
+    <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0;256.58892822265625"></animate>
+  </path>
+  <text x="50%" y="50%" fill="#ffffff" dy=".3em" style="font-size:24px;/* font-weight:bold; */text-anchor:middle;transform: scale(0.2);transform-origin: 50px 75px;"> Connecting you to the Blockchain </text>
+  </svg>`
     let loaderWrapper = document.createElement("div");
     let wrapper = document.createElement("div");
     let iframe = document.createElement("iframe");
     let closeButtonWrapper = document.createElement("p");
-    let feature_img = document.createElement("img");
+    let img_wrapper = document.createElement("div");
+    let connected_img = document.createElement("img");
+    let vic_hand_img = document.createElement("img");
     let closeButton = document.createElement("button");
     const textnode = document.createTextNode("Close");
     loaderWrapper.insertAdjacentHTML("afterbegin", loaderTemplate);
     closeButton.appendChild(textnode);
     loaderWrapper.id = "100pay_loader";
     closeButtonWrapper.id = "close_100pay_btn";
-    feature_img.className = "feature_img";
-    feature_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647612325/100Pay/100Pay-checkout-feature_sxkegt.svg";
+    img_wrapper.className = "img_wrapper";
+    connected_img.className = "connected_img";
+    vic_hand_img.className = "vic_hand_img";
+    vic_hand_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647615169/100Pay/victory-hand_zaueti.svg";
+    connected_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647617288/100Pay/100pay-connected_dov5km.svg";
     closeButton.className = "btn text-white close_100pay_btn";
     closeButton.id = "close_100pay_modal";
-    closeButtonWrapper.appendChild(feature_img)
+    closeButtonWrapper.appendChild(img_wrapper)
     closeButtonWrapper.appendChild(closeButton);
     iframe.className = "show100Pay_modal";
     iframe.id = "show100PayModal";
@@ -133,6 +155,9 @@ class payWith100Pay {
     let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
       document.getElementById("show100PayWrapper").classList.add("show");
+      img_wrapper.appendChild(vic_hand_img)
+      img_wrapper.appendChild(connected_img)
+
     });
     newIframe.src = data.hosted_url;
   }
