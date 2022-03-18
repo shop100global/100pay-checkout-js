@@ -28,11 +28,10 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 
 ---
 
-<br>
 
 ## Example 👇🏾👇🏾😋👇🏾👇🏾
 
-![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647617998/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_h6bknd.gif)
+![Demo example](https://res.cloudinary.com/estaterally/image/upload/v1647617998/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_h6bknd.gif)
 
 ### View Demo
 
@@ -40,11 +39,9 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 
 ## 👉 Source code [here](https://github.com/miracleonyenma/pay-with-100pay-example)
 
-<br>
 
 ---
 
-<br>
 
 First Import the Javascript Library to your app or add 100pay-js script tag to your website headers.
 
