@@ -57,23 +57,37 @@ class payWith100Pay {
         overflow: hidden;
       }
       .show100Pay .show100Pay_modal {
-        height: calc(100% - 8%);
+        height: calc(100% - 66px);
         width: 100%;
         border: none;
         border-radius: 16px 16px 0 0;
         padding-bottom: 0;
         }
         .show100Pay.show {
-        top: 8%;
+        top: 66px;
+        }
+        #close_100pay_btn {
+          padding: 15px 0;
+          display: flex;
+          color: white;
+          max-width: 400px;
+          text-align: right;
+          margin: auto;
+          text-transform: uppercase;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .feature_img{
+          height: 24px;
         }
         .close_100pay_btn {
-          background: #fff;
+          color: #fff;
+          text-align: right;
           outline: none;
           border: none;
           padding: 6px 12px;
           border-radius: 8px;
           font-weight: 700;
-          color: #e94444;
           cursor: pointer;
         }
         .body-overflow-hidden {
@@ -89,16 +103,18 @@ class payWith100Pay {
     let wrapper = document.createElement("div");
     let iframe = document.createElement("iframe");
     let closeButtonWrapper = document.createElement("p");
+    let feature_img = document.createElement("img");
     let closeButton = document.createElement("button");
-    const textnode = document.createTextNode("Close X");
+    const textnode = document.createTextNode("Close");
     loaderWrapper.insertAdjacentHTML("afterbegin", loaderTemplate);
     closeButton.appendChild(textnode);
-    closeButtonWrapper.style =
-      "text-align: center; color: white; padding: 4px;";
     loaderWrapper.id = "100pay_loader";
     closeButtonWrapper.id = "close_100pay_btn";
+    feature_img.className = "feature_img";
+    feature_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647612325/100Pay/100Pay-checkout-feature_sxkegt.svg";
     closeButton.className = "btn text-white close_100pay_btn";
     closeButton.id = "close_100pay_modal";
+    closeButtonWrapper.appendChild(feature_img)
     closeButtonWrapper.appendChild(closeButton);
     iframe.className = "show100Pay_modal";
     iframe.id = "show100PayModal";
