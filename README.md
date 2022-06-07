@@ -1,8 +1,14 @@
-# 100Pay Checkout SDK
+# 100Pay Checkout
 
 Accept crypto payments on your website in 3 mins
 
+<!--
+## ✋ ✋ PACKAGE HAS BEEN DISCONTINUED
+## Please 👉 [click here](https://npmjs.com/@100pay-hq/checkout) for the updated package 📦 -->
+
 ## Getting Started
+
+# 🏄 🚀
 
 Before you can start accepting crypto payments, you need to create a [100pay account](https://100pay.co)  and obtain your api keys from the [100Developers platform](https://100pay.co)
 
@@ -18,7 +24,23 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 * swap crypto
 * buy/sell crypto
 
-## 100pay-js Usage
+
+## 100pay-js
+
+---
+
+## Example 👇🏾👇🏾😋👇🏾👇🏾
+
+![Example Demo](https://res.cloudinary.com/estaterally/image/upload/v1647632635/f849b542-01c3-4a72-ad65-50a2dc5ad86d_gif_004_ina8fg.gif)
+
+### View Demo
+
+## 👉 Live example hosted on Netlify [here](https://pay-with-100pay-example.netlify.app/)
+
+## 👉 Source code [here](https://github.com/miracleonyenma/pay-with-100pay-example)
+
+---
+
 
 First Import the Javascript Library to your app or add 100pay-js script tag to your website headers.
 
@@ -53,6 +75,7 @@ First Import the Javascript Library to your app or add 100pay-js script tag to y
 
 <!-- Wrapper for the 100Pay checkout modal -->
 <div id="show100Pay"></div>
+
 ```
 
 ### Javascript
@@ -128,6 +151,7 @@ import { shop100Pay } from "@100pay-hq/100pay-checkout";
 
 // or import using require
 const shop100Pay = require("@100pay-hq/100pay-checkout")
+
 ```
 
 When the user clicks on pay button, load 100pay modal.
