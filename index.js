@@ -32,6 +32,7 @@ class payWith100Pay {
   }
   createElements(data) {
     this.appendStyle(`
+
       #show100Pay {
       top: 0;
       left: 0;
@@ -104,8 +105,10 @@ class payWith100Pay {
         0% {
           transform: rotate(15deg);
         }
+
         100% {
           transform: rotate(-15deg);
+
         }
       }
 
@@ -129,11 +132,13 @@ class payWith100Pay {
     closeButton.appendChild(textnode);
     loaderWrapper.id = "100pay_loader";
     closeButtonWrapper.id = "close_100pay_btn";
+
     img_wrapper.className = "img_wrapper";
     connected_img.className = "connected_img";
     vic_hand_img.className = "vic_hand_img";
     vic_hand_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647615169/100Pay/victory-hand_zaueti.svg";
     connected_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647617288/100Pay/100pay-connected_dov5km.svg";
+
     closeButton.className = "btn text-white close_100pay_btn";
     closeButton.id = "close_100pay_modal";
     closeButtonWrapper.appendChild(img_wrapper)
@@ -146,7 +151,9 @@ class payWith100Pay {
     document.body.classList.add("body-overflow-hidden");
     document.getElementById("show100Pay").style = "display: block;";
     document.getElementById("show100Pay").appendChild(closeButtonWrapper);
+
     document.getElementById("show100Pay").appendChild(loaderWrapper);
+
     document.getElementById("show100Pay").appendChild(wrapper);
     let newCloseBtn = document.getElementById("close_100pay_modal");
     newCloseBtn.addEventListener("click", () => {
@@ -155,8 +162,10 @@ class payWith100Pay {
     let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
       document.getElementById("show100PayWrapper").classList.add("show");
+
       img_wrapper.appendChild(vic_hand_img)
       img_wrapper.appendChild(connected_img)
+
 
     });
     newIframe.src = data.hosted_url;
