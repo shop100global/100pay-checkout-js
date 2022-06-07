@@ -65,11 +65,11 @@ When the user clicks on pay button, load 100pay modal.
   paymentForm.addEventListener("submit", payWith100pay, false);
   function payWith100pay(e) {
       e.preventDefault();
-        const email = document.getElementById("email-address").value;
-        const phone = document.getElementById("phone").value;
-        const amount = document.getElementById("amount").value;
-        const firstName = document.getElementById("first-name").value;
-        const lastName = document.getElementById("last-name").value;
+      const email = document.getElementById("email-address").value;
+      const phone = document.getElementById("phone").value;
+      const amount = document.getElementById("amount").value;
+      const firstName = document.getElementById("first-name").value;
+      const lastName = document.getElementById("last-name").value;
 
       shop100Pay.setup({
       ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
@@ -115,15 +115,19 @@ When the user clicks on pay button, load 100pay modal.
 
 ## using npm
 
+```bash
+npm install @100pay-hq/checkout
+```
+
 Start by importing the library to your javascript file
 
 ```Javascript
 
 // using import
-import { shop100Pay } from "@shop100/100pay-checkout";
+import { shop100Pay } from "@100pay-hq/100pay-checkout";
 
 // or import using require
-const shop100Pay = require("@shop100/100pay-checkout")
+const shop100Pay = require("@100pay-hq/100pay-checkout")
 ```
 
 When the user clicks on pay button, load 100pay modal.
@@ -131,19 +135,24 @@ When the user clicks on pay button, load 100pay modal.
 ```Javascript
   function payWith100pay(e) {
       e.preventDefault();
+      const email = document.getElementById("email-address").value;
+      const phone = document.getElementById("phone").value;
+      const amount = document.getElementById("amount").value;
+      const firstName = document.getElementById("first-name").value;
+      const lastName = document.getElementById("last-name").value;
 
       shop100Pay.setup({
       ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
       api_key: "TEST;PK;XXXX", // paste api key here
       customer: {
         user_id: "1", // optional
-        name: document.getElementById("first-name"),
-        phone:  document.getElementById("phone"),
-        email:  document.getElementById("email-address")
+        name: firstName + " " + lastName,
+        phone,
+        email
       },
       billing: {
-        amount: document.getElementById("amount"),
-        currency: "USD",
+        amount,
+        currency: "USD", // or any other currency supported by 100pay
         description: "Test Payment",
         country: "USA",
         vat: 10, //optional
@@ -174,37 +183,42 @@ When the user clicks on pay button, load 100pay modal.
 
 ```HTML
 <template>
-  <div id="app">
-     <form id="paymentForm">
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email-address" required />
+  <div>
+    <div id="app">
+      <form id="paymentForm">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email-address" required />
+        </div>
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          <input type="tel" id="amount" required />
+        </div>
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" />
+        </div>
+        <div class="form-submit">
+          <button type="submit" @click="payWith100pay()"> Pay </button>
+        </div>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="amount">Amount</label>
-      <input type="tel" id="amount" required />
-    </div>
-    <div class="form-group">
-      <label for="first-name">First Name</label>
-      <input type="text" id="first-name" />
-    </div>
-    <div class="form-group">
-      <label for="last-name">Last Name</label>
-      <input type="text" id="last-name" />
-    </div>
-    <div class="form-submit">
-      <button type="submit" @click="payWith100pay()"> Pay </button>
-    </div>
-  </form>
+
+    <!-- Wrapper for the 100Pay checkout modal -->
+    <div id="show100Pay"></div>
   </div>
 </template>
 
 <script>
 // using import
-import { shop100Pay } from "@shop100/100pay-checkout";
+import { shop100Pay } from "@100pay-hq/100pay-checkout";
 
 // using require
-const shop100Pay = require("@shop100/100pay-checkout");
+const shop100Pay = require("@100pay-hq/100pay-checkout");
 
 export default {
   data(){
