@@ -1,24 +1,22 @@
 let charge;
 class payWith100Pay {
-  constructor(config) { }
   appendStyle(content) {
-    let style = document.createElement("STYLE");
-    style.id = "100pay_style";
-    style.type = "text/css";
+    let style = document.createElement('STYLE');
+    style.id = '100pay_style';
+    // style.type = 'text/css'; // deprecated
     style.appendChild(document.createTextNode(content));
-    document.head.appendChild(style);
   }
-  setup(charge_data) {
-    charge = charge_data;
+  setup(CHARGE_DATA) {
+    charge = CHARGE_DATA;
     let api_key = charge.api_key;
     delete charge.callback;
     delete charge.api_key;
     let data = charge;
-    fetch("https://api.shop100.co/api/v1/pay/charge", {
-      method: "POST",
+    fetch('https://api.shop100.co/api/v1/pay/charge', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "api-key": api_key,
+        'Content-Type': 'application/json',
+        'api-key': api_key,
       },
       body: JSON.stringify(data),
     })
@@ -118,73 +116,71 @@ class payWith100Pay {
     <animate attributeName="stroke-dashoffset" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0;256.58892822265625"></animate>
   </path>
   <text x="50%" y="50%" fill="#ffffff" dy=".3em" style="font-size:24px;/* font-weight:bold; */text-anchor:middle;transform: scale(0.2);transform-origin: 50px 75px;"> Connecting you to the Blockchain </text>
-  </svg>`
-    let loaderWrapper = document.createElement("div");
-    let wrapper = document.createElement("div");
-    let iframe = document.createElement("iframe");
-    let closeButtonWrapper = document.createElement("p");
-    let img_wrapper = document.createElement("div");
-    let connected_img = document.createElement("img");
-    let vic_hand_img = document.createElement("img");
-    let closeButton = document.createElement("button");
-    const textnode = document.createTextNode("Close");
-    loaderWrapper.insertAdjacentHTML("afterbegin", loaderTemplate);
+  </svg>`;
+    let loaderWrapper = document.createElement('div');
+    let wrapper = document.createElement('div');
+    let iframe = document.createElement('iframe');
+    let closeButtonWrapper = document.createElement('p');
+    let img_wrapper = document.createElement('div');
+    let connected_img = document.createElement('img');
+    let vic_hand_img = document.createElement('img');
+    let closeButton = document.createElement('button');
+    const textnode = document.createTextNode('Close');
+    loaderWrapper.insertAdjacentHTML('afterbegin', loaderTemplate);
     closeButton.appendChild(textnode);
-    loaderWrapper.id = "100pay_loader";
-    closeButtonWrapper.id = "close_100pay_btn";
-
-    img_wrapper.className = "img_wrapper";
-    connected_img.className = "connected_img";
-    vic_hand_img.className = "vic_hand_img";
-    vic_hand_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647615169/100Pay/victory-hand_zaueti.svg";
-    connected_img.src = "https://res.cloudinary.com/estaterally/image/upload/v1647617288/100Pay/100pay-connected_dov5km.svg";
-
-    closeButton.className = "btn text-white close_100pay_btn";
-    closeButton.id = "close_100pay_modal";
-    closeButtonWrapper.appendChild(img_wrapper)
+    loaderWrapper.id = '100pay_loader';
+    closeButtonWrapper.id = 'close_100pay_btn';
+    img_wrapper.className = 'img_wrapper';
+    connected_img.className = 'connected_img';
+    vic_hand_img.className = 'vic_hand_img';
+    vic_hand_img.src =
+      'https://res.cloudinary.com/estaterally/image/upload/v1647615169/100Pay/victory-hand_zaueti.svg';
+    connected_img.src =
+      'https://res.cloudinary.com/estaterally/image/upload/v1647617288/100Pay/100pay-connected_dov5km.svg';
+    closeButton.className = 'btn text-white close_100pay_btn';
+    closeButton.id = 'close_100pay_modal';
+    closeButtonWrapper.appendChild(img_wrapper);
     closeButtonWrapper.appendChild(closeButton);
-    iframe.className = "show100Pay_modal";
-    iframe.id = "show100PayModal";
-    wrapper.className = "show100Pay";
-    wrapper.id = "show100PayWrapper";
+    iframe.className = 'show100Pay_modal';
+    iframe.id = 'show100PayModal';
+    wrapper.className = 'show100Pay';
+    wrapper.id = 'show100PayWrapper';
     wrapper.appendChild(iframe);
-    document.body.classList.add("body-overflow-hidden");
-    document.getElementById("show100Pay").style = "display: block;";
-    document.getElementById("show100Pay").appendChild(closeButtonWrapper);
-
-    document.getElementById("show100Pay").appendChild(loaderWrapper);
-
-    document.getElementById("show100Pay").appendChild(wrapper);
-    let newCloseBtn = document.getElementById("close_100pay_modal");
-    newCloseBtn.addEventListener("click", () => {
-      this.closeModal(charge);
+    document.body.classList.add('body-overflow-hidden');
+    let show100pay = document.getElementById('show100Pay');
+    show100pay.setAttribute('style', 'display: block;');
+    show100pay.appendChild(closeButtonWrapper);
+    show100pay.appendChild(loaderWrapper);
+    show100pay.appendChild(wrapper);
+    let newCloseBtn = document.getElementById('close_100pay_modal');
+    newCloseBtn.addEventListener('click', () => {
+      //   this.closeModal(charge);
     });
-    let newIframe = document.getElementById("show100PayModal");
-    newIframe.addEventListener("load", () => {
-      document.getElementById("show100PayWrapper").classList.add("show");
-
-      img_wrapper.appendChild(vic_hand_img)
-      img_wrapper.appendChild(connected_img)
-
-
+    let newIframe = document.getElementById('show100PayModal');
+    newIframe.addEventListener('load', () => {
+      document.getElementById('show100PayWrapper').classList.add('show');
+      img_wrapper.appendChild(vic_hand_img);
+      img_wrapper.appendChild(connected_img);
     });
     newIframe.src = data.hosted_url;
   }
   closeModal(charge) {
-    document.getElementById("show100PayWrapper").classList.remove("show");
-    let wrapper = document.getElementById("show100PayWrapper");
-    let close_btn = document.getElementById("close_100pay_btn");
-    let loaderWrapper = document.getElementById("100pay_loader");
+    document.getElementById('show100PayWrapper').classList.remove('show');
+    let wrapper = document.getElementById('show100PayWrapper');
+    let close_btn = document.getElementById('close_100pay_btn');
+    let loaderWrapper = document.getElementById('100pay_loader');
     loaderWrapper.remove();
     wrapper.remove();
     close_btn.remove();
-    document.getElementById("show100Pay").style = "display: none;";
-    document.body.classList.remove("body-overflow-hidden");
-    let style = document.getElementById("100pay_style");
+    let show100pay = document.getElementById('show100Pay');
+    show100pay.setAttribute('style', 'display: none;');
+    document.body.classList.remove('body-overflow-hidden');
+    let style = document.getElementById('100pay_style');
     style.remove();
     charge.onClose();
   }
 }
 const shop100Pay = new payWith100Pay();
 window.shop100Pay = shop100Pay;
-module.exports.shop100Pay = shop100Pay;
+{ shop100Pay };
+//# sourceMappingURL=app.js.map
