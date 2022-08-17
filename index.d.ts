@@ -332,8 +332,7 @@ export declare type COUNTRIES =
   | 'ZA'
   | 'ZM'
   | 'ZW'
-  | 'USA'
-  ;
+  | 'USA';
 export interface CHARGE_DATA {
   api_key: string;
   ref_id: string;
