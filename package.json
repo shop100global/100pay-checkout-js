@@ -1,7 +1,7 @@
 {
   "name": "@100pay-hq/checkout",
 
-  "version": "1.1.0",
+  "version": "1.1.2",
 
   "description": "accept crypto payments on your website in 3 mins",
   "main": "index.min.js",
@@ -41,7 +41,11 @@
     "coinbase",
     "commerce",
     "bitpay",
-    "coin payments"
+    "coin payments",
+    "bitcoin payment",
+    "coin payment",
+    "payment gateway",
+    "crypto gateway"
   ],
   "author": "brainyjosh - 100pay",
   "license": "ISC",
