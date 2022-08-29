@@ -356,11 +356,12 @@ export interface CHARGE_DATA {
   onError: (error: string) => void;
 }
 export declare let charge: any | CHARGE_DATA;
-export declare class payWith100Pay {
-  appendStyle(content: string): void;
+declare class payWith100Pay {
+  constructor();
+  private appendStyle;
   setup(CHARGE_DATA: CHARGE_DATA): void;
-  createElements(data: any): void;
-  closeModal(charge: CHARGE_DATA): void;
+  private createElements;
+  private closeModal;
 }
 declare const shop100Pay: payWith100Pay;
 export { shop100Pay };
