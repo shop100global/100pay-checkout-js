@@ -1,5 +1,8 @@
-let charge;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.shop100Pay = exports.charge = void 0;
 class payWith100Pay {
+  constructor() { }
   appendStyle(content) {
     let style = document.createElement('STYLE');
     style.id = '100pay_style';
@@ -7,11 +10,11 @@ class payWith100Pay {
     style.appendChild(document.createTextNode(content));
   }
   setup(CHARGE_DATA) {
-    charge = CHARGE_DATA;
-    let api_key = charge.api_key;
-    delete charge.callback;
-    delete charge.api_key;
-    let data = charge;
+    exports.charge = CHARGE_DATA;
+    let api_key = exports.charge.api_key;
+    delete exports.charge.callback;
+    delete exports.charge.api_key;
+    let data = exports.charge;
     fetch('https://api.shop100.co/api/v1/pay/charge', {
       method: 'POST',
       headers: {
@@ -25,7 +28,7 @@ class payWith100Pay {
         this.createElements(data);
       })
       .catch((error) => {
-        charge.onError(error);
+        exports.charge.onError(error);
       });
   }
   createElements(data) {
@@ -181,6 +184,5 @@ class payWith100Pay {
   }
 }
 const shop100Pay = new payWith100Pay();
+exports.shop100Pay = shop100Pay;
 window.shop100Pay = shop100Pay;
-{ shop100Pay };
-//# sourceMappingURL=app.js.map
