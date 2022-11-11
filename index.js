@@ -14,7 +14,7 @@ class payWith100Pay {
     delete charge.callback;
     delete charge.api_key;
     let data = charge;
-    fetch("https://api.shop100.co/api/v1/pay/charge", {
+    fetch("https://api.100pay.co/api/v1/pay/charge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

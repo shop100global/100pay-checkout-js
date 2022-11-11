@@ -147,10 +147,10 @@ Start by importing the library to your javascript file
 ```Javascript
 
 // using import
-import { shop100Pay } from "@100pay-hq/100pay-checkout";
+import { shop100Pay } from "@100pay-hq/checkout";
 
 // or import using require
-const shop100Pay = require("@100pay-hq/100pay-checkout")
+const shop100Pay = require("@100pay-hq/checkout")
 
 ```
 
@@ -167,7 +167,7 @@ When the user clicks on pay button, load 100pay modal.
 
       shop100Pay.setup({
       ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
-      api_key: "TEST;PK;XXXX", // paste api key here
+      api_key: "", // paste api key here
       customer: {
         user_id: "1", // optional
         name: firstName + " " + lastName,
@@ -263,7 +263,7 @@ export default {
 
         shop100Pay.setup({
           ref_id: "" + Math.floor(Math.random() * 1000000000 + 1),
-          api_key: "TEST;PK;XXXX", // paste api key here
+          api_key: "", // paste api key here
           customer: {
             user_id: "1", // optional
             name: this.checkout_form.name,
