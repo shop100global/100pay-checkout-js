@@ -239,10 +239,10 @@ When the user clicks on pay button, load 100pay modal.
 
 <script>
 // using import
-import { shop100Pay } from "@100pay-hq/100pay-checkout";
+import { shop100Pay } from "@100pay-hq/checkout";
 
 // using require
-const shop100Pay = require("@100pay-hq/100pay-checkout");
+const shop100Pay = require("@100pay-hq/checkout");
 
 export default {
   data(){
