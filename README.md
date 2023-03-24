@@ -303,4 +303,4 @@ export default {
 
 ## Want More?
 
-Read our documentation [100Developers platform](https://100pay.co)
+Read our API documentation [100Developers platform](https://documenter.getpostman.com/view/13045730/2s93RMUatE)
