@@ -302,5 +302,6 @@ export default {
 ```
 
 ## Want More?
-
-Read our API documentation [100Developers platform](https://documenter.getpostman.com/view/13045730/2s93RMUatE)
+[Verify Payments](https://100pay.co/blog/how-to-verify-crypto-payments-on-100-pay)
+[Enable Webhooks](https://100pay.co/blog/subscribing-to-webhooks-on-your-100-pay-account)
+Read our API documentation [100Pay Developers Documentation](https://documenter.getpostman.com/view/13045730/2s93RMUatE)
