@@ -119,12 +119,20 @@ When the user clicks on pay button, load 100pay modal.
       },
       call_back_url: "http://localhost:8000/verifyorder/",
       onClose: msg => {
-        alert("User closed payment modal.");
+        alert("You just closed the crypto payment modal.");
       },
       callback: reference => {
-        alert(`Transaction successful with id: ${reference}`);
+        let total_received = Number(reference.payments.reduce((total, payment) => payment.value.local.amount + total ,0)).toFixed(2)
+        alert(`New Payment of ${total_received} detected.`);
+        /**
+         * @dev ⚠️ never give value to the user because you received a callback.
+         * Always verify payments by sending a get request to 100Pay Get Crypto Charge endpoint on your backend.
+         * We have written a well detailed article to guide you on how to do this. Check out the link below.
+         * 👉 https://100pay.co/blog/how-to-verify-crypto-payments-on-100-pay
+         * */
       },
       onError: error => {
+        // handle your errors, mostly caused by a broken internet connection.
           console.log(error)
           alert("Sorry something went wrong pls try again.")
       }
@@ -189,12 +197,20 @@ When the user clicks on pay button, load 100pay modal.
       },
       call_back_url: "http://localhost:8000/verifyorder/",
       onClose: msg => {
-        alert("User closed payment modal.");
+        alert("You just closed the crypto payment modal.");
       },
       callback: reference => {
-        alert(`Transaction successful with id: ${reference}`);
+        let total_received = Number(reference.payments.reduce((total, payment) => payment.value.local.amount + total ,0)).toFixed(2)
+        alert(`New Payment of ${total_received} detected.`);
+        /**
+         * @dev ⚠️ never give value to the user because you received a callback.
+         * Always verify payments by sending a get request to 100Pay Get Crypto Charge endpoint on your backend.
+         * We have written a well detailed article to guide you on how to do this. Check out the link below.
+         * 👉 https://100pay.co/blog/how-to-verify-crypto-payments-on-100-pay
+         * */
       },
       onError: error => {
+        // handle your errors, mostly caused by a broken internet connection.
           console.log(error)
           alert("Sorry something went wrong pls try again.")
       }
@@ -212,19 +228,15 @@ When the user clicks on pay button, load 100pay modal.
       <form id="paymentForm">
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email-address" required />
+          <input type="email" id="email-address" v-model="checkout_form.email" required />
         </div>
         <div class="form-group">
           <label for="amount">Amount</label>
-          <input type="tel" id="amount" required />
+          <input type="tel" id="amount" v-model="checkout_form.amount" required />
         </div>
         <div class="form-group">
           <label for="first-name">First Name</label>
-          <input type="text" id="first-name" />
-        </div>
-        <div class="form-group">
-          <label for="last-name">Last Name</label>
-          <input type="text" id="last-name" />
+          <input type="text" id="first-name" v-model="checkout_form.name" />
         </div>
         <div class="form-submit">
           <button type="submit" @click="payWith100pay()"> Pay </button>
@@ -283,14 +295,22 @@ export default {
             order_id: "OR2", // optional
             charge_ref: "REF" // optionalm, you can add more fields
           },
-          call_back_url: "http://localhost:8000/verifyorder/",
+          call_back_url: "https://my-site.com/redirect-user-after-payment",
           onClose: msg => {
-            alert("User closed payment modal.");
+            alert("You just closed the crypto payment modal.");
           },
           callback: reference => {
-            alert(`Transaction successful with id: ${reference}`);
+            let total_received = Number(reference.payments.reduce((total, payment) => payment.value.local.amount + total ,0)).toFixed(2)
+            alert(`New Payment of ${total_received} detected.`);
+            /**
+             * @dev ⚠️ never give value to the user because you received a callback.
+             * Always verify payments by sending a get request to 100Pay Get Crypto Charge endpoint on your backend.
+             * We have written a well detailed article to guide you on how to do this. Check out the link below.
+             * 👉 https://100pay.co/blog/how-to-verify-crypto-payments-on-100-pay
+             * */
           },
           onError: error => {
+            // handle your errors, mostly caused by a broken internet connection.
               console.log(error)
               alert("Sorry something went wrong pls try again.")
           }

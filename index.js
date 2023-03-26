@@ -159,6 +159,9 @@ class payWith100Pay {
       img_wrapper.appendChild(connected_img)
 
     });
+    newIframe.addEventListener("new-payment", (e) => {
+      charge.callback(e.detail);
+    })
     newIframe.src = data.hosted_url;
   }
   closeModal(charge) {
