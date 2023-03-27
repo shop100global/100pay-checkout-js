@@ -1,7 +1,7 @@
 {
   "name": "@100pay-hq/checkout",
 
-  "version": "1.2.0",
+  "version": "1.2.1",
 
   "description": "accept crypto payments on your website and apps in 3 mins",
   "main": "index.min.js",
