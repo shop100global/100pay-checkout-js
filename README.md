@@ -44,6 +44,8 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 
 First Import the Javascript Library to your app or add 100pay-js script tag to your website headers.
 
+<script src="https://js.100pay.co/"></script>
+
 ### HTML
 
 ```Html
