@@ -123,9 +123,8 @@ When the user clicks on pay button, load 100pay modal.
       onClose: msg => {
         alert("You just closed the crypto payment modal.");
       },
-      callback: reference => {
-        let total_received = Number(reference.payments.reduce((total, payment) => payment.value.local.amount + total ,0)).toFixed(2)
-        alert(`New Payment of ${total_received} detected.`);
+      onPayment: reference => {
+        alert(`New Payment detected with reference ${reference}`);
         /**
          * @dev ⚠️ never give value to the user because you received a callback.
          * Always verify payments by sending a get request to 100Pay Get Crypto Charge endpoint on your backend.
@@ -201,9 +200,8 @@ When the user clicks on pay button, load 100pay modal.
       onClose: msg => {
         alert("You just closed the crypto payment modal.");
       },
-      callback: reference => {
-        let total_received = Number(reference.payments.reduce((total, payment) => payment.value.local.amount + total ,0)).toFixed(2)
-        alert(`New Payment of ${total_received} detected.`);
+      onPayment: reference => {
+        alert(`New Payment detected with reference ${reference}`);
         /**
          * @dev ⚠️ never give value to the user because you received a callback.
          * Always verify payments by sending a get request to 100Pay Get Crypto Charge endpoint on your backend.

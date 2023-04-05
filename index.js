@@ -154,15 +154,21 @@ class payWith100Pay {
     });
     let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
-      document.getElementById("show100PayWrapper").classList.add("show");
-      img_wrapper.appendChild(vic_hand_img)
-      img_wrapper.appendChild(connected_img)
-
+        document.getElementById("show100PayWrapper").classList.add("show");
+        img_wrapper.appendChild(vic_hand_img)
+        img_wrapper.appendChild(connected_img)
+        window.addEventListener('message', (event) => {
+            const data = event.data;
+            let checkData = data.split('_');
+            if(checkData.length === 2){
+                charge.onPayment(checkData[1]);
+            }
+        });
     });
-    newIframe.addEventListener("new-payment", (e) => {
-      charge.callback(e.detail);
-    })
     newIframe.src = data.hosted_url;
+  }
+  newPayment(charge, payment) {
+    charge.onPayment(payment);
   }
   closeModal(charge) {
     document.getElementById("show100PayWrapper").classList.remove("show");
