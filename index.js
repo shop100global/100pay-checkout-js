@@ -37,14 +37,14 @@ class payWith100Pay {
       left: 0;
       position: fixed;
       background-color: #000000c2;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: 1050;
       display: none;
       }
       .show100Pay {
       transition: 0.3s;
-      height: 100vh;
+      height: 100%;
       width: 100%;
       max-width: 400px;
       left: 50%;
