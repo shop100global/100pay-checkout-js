@@ -353,6 +353,7 @@ export interface CHARGE_DATA {
   metadata: any;
   call_back_url: string;
   callback: (reference: string) => void;
+  onPayment: (data: any) => void;
   onClose: () => void;
   onError: (error: string) => void;
 }

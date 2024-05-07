@@ -158,7 +158,8 @@ class PayWith100Pay {
     document.getElementById("show100Pay").appendChild(wrapper);
     let newCloseBtn = document.getElementById("close_100pay_modal");
     newCloseBtn.addEventListener("click", () => {
-      this.closeModal(charge);
+      confirm("Are you sure you want to close this payment?") &&
+        this.closeModal(charge);
     });
     let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
@@ -167,8 +168,10 @@ class PayWith100Pay {
       img_wrapper.appendChild(connected_img);
       window.addEventListener("message", (event) => {
         const data = event.data;
+        console.log({ type: typeof data, data });
+        if (typeof data !== "string") return;
         let checkData = data.split("_");
-        if (checkData.length === 2) {
+        if (checkData.length === 2 && checkData[0] === "100PAY-PAYMENT-REF") {
           charge.onPayment(checkData[1]);
         }
       });
