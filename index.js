@@ -155,6 +155,8 @@ class PayWith100Pay {
     // if no parent element is provided, append to body
     const targetEl = document.getElementById("show100Pay");
     let shop100TargetEl = targetEl;
+    console.log({ shop100TargetEl, targetEl });
+
     if (!targetEl) {
       const newDiv = document.createElement("div");
       newDiv.id = "show100Pay";
