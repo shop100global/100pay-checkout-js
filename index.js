@@ -152,10 +152,19 @@ class PayWith100Pay {
     wrapper.id = "show100PayWrapper";
     wrapper.appendChild(iframe);
     document.body.classList.add("body-overflow-hidden");
-    document.getElementById("show100Pay").style = "display: block;";
-    document.getElementById("show100Pay").appendChild(closeButtonWrapper);
-    document.getElementById("show100Pay").appendChild(loaderWrapper);
-    document.getElementById("show100Pay").appendChild(wrapper);
+    // if no parent element is provided, append to body
+    const targetEl = document.getElementById("show100Pay");
+    let shop100TargetEl = targetEl;
+    if (!targetEl) {
+      const newDiv = document.createElement("div");
+      newDiv.id = "show100Pay";
+      document.body.appendChild(newDiv);
+      shop100TargetEl = newDiv;
+    }
+    shop100TargetEl.style = "display: block;";
+    shop100TargetEl.appendChild(closeButtonWrapper);
+    shop100TargetEl.appendChild(loaderWrapper);
+    shop100TargetEl.appendChild(wrapper);
     let newCloseBtn = document.getElementById("close_100pay_modal");
     newCloseBtn.addEventListener("click", () => {
       confirm("Are you sure you want to close this payment?") &&
@@ -189,7 +198,7 @@ class PayWith100Pay {
     loaderWrapper.remove();
     wrapper.remove();
     close_btn.remove();
-    document.getElementById("show100Pay").style = "display: none;";
+    shop100TargetEl.style = "display: none;";
     document.body.classList.remove("body-overflow-hidden");
     let style = document.getElementById("100pay_style");
     style.remove();
