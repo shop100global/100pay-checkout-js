@@ -82,7 +82,8 @@ export declare type CURRENCIES =
   | "VES"
   | "VND"
   | "XOF"
-  | "ZAR";
+  | "ZAR"
+  | string;
 export declare type COUNTRIES =
   | "AD"
   | "AE"
@@ -332,7 +333,8 @@ export declare type COUNTRIES =
   | "ZA"
   | "ZM"
   | "ZW"
-  | "USA";
+  | "USA"
+  | string;
 export interface CHARGE_DATA {
   api_key: string;
   ref_id: string;
