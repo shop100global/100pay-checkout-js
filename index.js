@@ -16,8 +16,8 @@ const shop100PayStyle = (options) => {
   transition: 0.3s;
   height: 100%;
   width: 100%;
-  max-width: ${options.maxWidth || 400};
-  max-height: ${options.maxHeight || "unset"};
+  max-width: ${options?.maxWidth || 400};
+  max-height: ${options?.maxHeight || "unset"};
   left: 50%;
   transform: translateX(-50%);
   position: fixed;
@@ -41,7 +41,7 @@ const shop100PayStyle = (options) => {
     padding: 15px 0;
     display: flex;
     color: white;
-    max-width: ${options.maxWidth || 400};
+    max-width: ${options?.maxWidth || 400};
     text-align: right;
     margin: auto;
     text-transform: uppercase;
