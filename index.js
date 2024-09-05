@@ -163,6 +163,7 @@ class PayWith100Pay {
       document.body.appendChild(newDiv);
       shop100TargetEl = newDiv;
     }
+    window.shop100TargetEl = shop100TargetEl;
     shop100TargetEl.style = "display: block;";
     shop100TargetEl.appendChild(closeButtonWrapper);
     shop100TargetEl.appendChild(loaderWrapper);
