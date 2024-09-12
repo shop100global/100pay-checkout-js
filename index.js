@@ -212,4 +212,4 @@ const shop100Pay = new PayWith100Pay();
 if (typeof window !== "undefined") {
   window.shop100Pay = shop100Pay;
 }
-module.exports.shop100Pay = shop100Pay;
+export { shop100Pay };
