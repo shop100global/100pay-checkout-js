@@ -19,7 +19,6 @@ Before you can start accepting crypto payments, you need to create a [100pay acc
 * create payment invoice
 * create payment links
 * create your own coin on any supported network
-* launch an ICO/IDO to raise funds for your project
 * analytics to monitor your business
 * swap crypto
 * buy/sell crypto
