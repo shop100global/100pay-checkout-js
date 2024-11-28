@@ -45,7 +45,7 @@ const shop100PayStyle = (options) => {
     text-align: right;
     margin: auto;
     text-transform: uppercase;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
   }
   .img_wrapper {
@@ -144,7 +144,7 @@ class PayWith100Pay {
       "https://res.cloudinary.com/estaterally/image/upload/v1647617288/100Pay/100pay-connected_dov5km.svg";
     closeButton.className = "btn text-white close_100pay_btn";
     closeButton.id = "close_100pay_modal";
-    closeButtonWrapper.appendChild(img_wrapper);
+    // closeButtonWrapper.appendChild(img_wrapper);
     closeButtonWrapper.appendChild(closeButton);
     iframe.className = "show100Pay_modal";
     iframe.id = "show100PayModal";
@@ -176,8 +176,8 @@ class PayWith100Pay {
     let newIframe = document.getElementById("show100PayModal");
     newIframe.addEventListener("load", () => {
       document.getElementById("show100PayWrapper").classList.add("show");
-      img_wrapper.appendChild(vic_hand_img);
-      img_wrapper.appendChild(connected_img);
+      // img_wrapper.appendChild(vic_hand_img);
+      // img_wrapper.appendChild(connected_img);
       window.addEventListener("message", (event) => {
         const data = event.data;
         console.log({ type: typeof data, data });
