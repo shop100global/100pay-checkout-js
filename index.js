@@ -186,6 +186,8 @@ class PayWith100Pay {
         let checkData = data.split("_");
         if (checkData.length === 2 && checkData[0] === "100PAY-PAYMENT-REF") {
           charge.onPayment(checkData[1]);
+        } else {
+          charge.onPayment(event);
         }
       });
     });
