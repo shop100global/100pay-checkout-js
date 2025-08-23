@@ -108,18 +108,40 @@ class PayWith100Pay {
       body: JSON.stringify(data),
     })
       .then(async (response) => {
-        const contentType = response.headers.get("content-type");
+        // First check if the response is ok
+        if (!response.ok) {
+          // Get the response text first
+          const errorText = await response.text();
 
-        if (contentType && contentType.includes("application/json")) {
-          return response.json();
-        } else {
-          return response.text(); // fallback for plain string
+          // Try to parse as JSON, fall back to text if it fails
+          let errorData;
+          try {
+            errorData = JSON.parse(errorText);
+          } catch {
+            // If JSON parsing fails, use the text as the error message
+            errorData = { message: errorText, status: response.status };
+          }
+
+          // Throw an error with the actual API error
+          throw new Error(
+            `API Error (${response.status}): ${errorData.message || errorText}`
+          );
+        }
+
+        // For successful responses, try to parse as JSON
+        const responseText = await response.text();
+        try {
+          return JSON.parse(responseText);
+        } catch {
+          // If successful response isn't JSON, return the text
+          return { message: responseText };
         }
       })
       .then((data) => {
         this.createElements(data, display_options);
       })
       .catch((error) => {
+        // Now you'll get the actual API error message instead of JSON parse error
         charge.onError(error);
       });
   }
