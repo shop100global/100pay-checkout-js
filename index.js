@@ -107,7 +107,15 @@ class PayWith100Pay {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+      .then((response) =>
+        response.text().then((text) => {
+          try {
+            return JSON.parse(text);
+          } catch {
+            return text; // not JSON, just return the raw string
+          }
+        })
+      )
       .then((data) => {
         this.createElements(data, display_options);
       })
