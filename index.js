@@ -107,15 +107,15 @@ class PayWith100Pay {
       },
       body: JSON.stringify(data),
     })
-      .then((response) =>
-        response.text().then((text) => {
-          try {
-            return JSON.parse(text);
-          } catch {
-            return text; // not JSON, just return the raw string
-          }
-        })
-      )
+      .then(async (response) => {
+        const contentType = response.headers.get("content-type");
+
+        if (contentType && contentType.includes("application/json")) {
+          return response.json();
+        } else {
+          return response.text(); // fallback for plain string
+        }
+      })
       .then((data) => {
         this.createElements(data, display_options);
       })
