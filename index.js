@@ -9,7 +9,8 @@ const shop100PayStyle = (options) => {
   background-color: #000000c2;
   width: 100%;
   height: 100%;
-  z-index: 1050;
+  z-index: 99999;
+  pointer-events: auto;
   display: none;
   }
   .show100Pay {
