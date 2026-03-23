@@ -94,7 +94,7 @@ class PayWith100Pay {
   }
 
   setup(charge_data, display_options) {
-    charge = charge_data;
+    charge = { ...charge_data };
     let api_key = charge.api_key;
     delete charge.callback;
     delete charge.api_key;

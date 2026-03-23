@@ -352,6 +352,11 @@ export interface CHARGE_DATA {
     pricing_type: string;
     description: string;
   };
+  options?: {
+    currency_allowlist?: string[];
+    currency_blocklist?: string[];
+    currency_default?: string;
+  };
   metadata: any;
   call_back_url: string;
   callback: (reference: string) => void;

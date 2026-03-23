@@ -216,6 +216,10 @@ The `shop100Pay.setup()` method accepts two parameters: `CHARGE_DATA` and `DISPL
 |-------|------|-------------|
 | `customer.user_id` | `string` | Your internal user ID |
 | `billing.vat` | `number` | VAT/tax percentage |
+| `options` | `object` | Advanced payment configuration |
+| `options.currency_allowlist` | `string[]` | Only allow these currencies (e.g., `["USDT", "BTC"]`) |
+| `options.currency_blocklist` | `string[]` | Block these currencies |
+| `options.currency_default` | `string` | Which currency to select by default |
 
 #### Supported Currencies
 
@@ -571,6 +575,11 @@ interface CHARGE_DATA {
     vat?: number;
     pricing_type: "fixed_price" | "partial";
     description: string;
+  };
+  options?: {
+    currency_allowlist?: string[];
+    currency_blocklist?: string[];
+    currency_default?: string;
   };
   metadata: Record<string, any>;
   call_back_url: string;
