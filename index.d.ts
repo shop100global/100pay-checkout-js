@@ -337,6 +337,9 @@ export declare type COUNTRIES =
   | string;
 export interface CHARGE_DATA {
   api_key: string;
+  origin?: string;
+  target_origin?: string;
+  targetOrigin?: string;
   ref_id: string;
   customer: {
     user_id?: string;
@@ -357,7 +360,11 @@ export interface CHARGE_DATA {
     currency_blocklist?: string[];
     currency_default?: string;
   };
-  metadata: any;
+  metadata?: {
+    oauthOrigin?: string;
+    clientHostname?: string;
+    [key: string]: any;
+  };
   call_back_url: string;
   callback: (reference: string) => void;
   onPayment: (data: any) => void;

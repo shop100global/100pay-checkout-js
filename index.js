@@ -85,6 +85,54 @@ const shop100PayStyle = (options) => {
 };
 class PayWith100Pay {
   constructor(config) {}
+
+  resolveCheckoutOrigin() {
+    if (typeof window === "undefined" || !window.location) {
+      return null;
+    }
+
+    const { origin, host } = window.location;
+    if (origin && origin !== "null") {
+      return origin;
+    }
+
+    return host ? `https://${host}` : null;
+  }
+
+  normalizeHostFromOrigin(value) {
+    if (!value) return null;
+
+    try {
+      return new URL(value).hostname;
+    } catch {
+      return null;
+    }
+  }
+
+  applyOriginMetadata(chargeInput) {
+    const resolvedOrigin =
+      chargeInput.origin ||
+      chargeInput.target_origin ||
+      chargeInput.targetOrigin ||
+      chargeInput?.metadata?.oauthOrigin ||
+      this.resolveCheckoutOrigin();
+
+    if (!resolvedOrigin) {
+      return chargeInput;
+    }
+
+    const normalizedCharge = { ...chargeInput };
+    normalizedCharge.metadata = { ...(normalizedCharge.metadata || {}) };
+    normalizedCharge.metadata.oauthOrigin = resolvedOrigin;
+
+    const host = this.normalizeHostFromOrigin(resolvedOrigin);
+    if (host && !normalizedCharge.metadata.clientHostname) {
+      normalizedCharge.metadata.clientHostname = host;
+    }
+
+    return normalizedCharge;
+  }
+
   appendStyle(content) {
     let style = document.createElement("STYLE");
     style.id = "100pay_style";
@@ -94,16 +142,23 @@ class PayWith100Pay {
   }
 
   setup(charge_data, display_options) {
-    charge = { ...charge_data };
+    const enrichedChargeData = this.applyOriginMetadata(charge_data || {});
+    charge = { ...enrichedChargeData };
     let api_key = charge.api_key;
     delete charge.callback;
     delete charge.api_key;
+    delete charge.origin;
+    delete charge.target_origin;
+    delete charge.targetOrigin;
     let data = charge;
+    const checkoutOrigin =
+      data?.metadata?.oauthOrigin || this.resolveCheckoutOrigin();
     fetch("https://api.100pay.co/api/v1/pay/charge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "api-key": api_key,
+        ...(checkoutOrigin ? { "x-checkout-origin": checkoutOrigin } : {}),
       },
       body: JSON.stringify(data),
     })
